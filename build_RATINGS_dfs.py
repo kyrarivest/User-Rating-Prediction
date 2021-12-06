@@ -48,7 +48,6 @@ def build(user_history_data, user_ratings_data):
 
         #If the user is in the user hsitory but not the user ratings data
         else:
-            #print("F")
             for i in range(1, len(product_names)):
                 user_i.append(np.nan)
 
