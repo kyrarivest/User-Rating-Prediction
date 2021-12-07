@@ -49,7 +49,8 @@ def pred_ratings(weights_index, weights_vector, ratings_index, ratings_vector):
 #user_history: the original user_history data
 #weight_matrix: the weight matrix of user distances
 #user_ratings_table: the ratings matrix of user and product ratings
-def run(user_history, weight_matrix, user_ratings_table):
+#power: specifies the power parameter
+def run(user_history, weight_matrix, user_ratings_table, power):
     print('Predicting ratings...')
 
 
@@ -65,7 +66,7 @@ def run(user_history, weight_matrix, user_ratings_table):
     print('Completed predicting ratings')
 
     #Save rating results table as a csv file
-    #user_ratings_table_pred.to_csv('distance_2_new.csv')
+    user_ratings_table_pred.to_csv('results_for_analysis/distance_' + str(power) + '.csv')
 
     return user_ratings_table_pred
 
