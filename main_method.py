@@ -5,6 +5,7 @@ import pickle
 import build_WEIGHT_matrix
 import build_RATINGS_dfs
 import predict
+import analyze_results
 
 
 
@@ -21,3 +22,4 @@ for power in powers:
 
   WEIGHT_matrix = build_WEIGHT_matrix.build(user_history, power)
   predicted_ratings = predict.run(WEIGHT_matrix, RATINGS_matrix, power)
+  analyze_results.run()
