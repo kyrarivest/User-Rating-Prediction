@@ -23,5 +23,5 @@ This program contains two methods. The **run** method is the main loop that runs
 
 The helper method of the **run** method is **pred_ratings**. This is the method taht does the heavy-lifting computation portion of the algorithm. For a specified user i and a specified product j, it will compute weighted rating of user i by multiplying all other user ratings (from user rating matrix) by the user distance to user i (from weight matrix). It then scales the final score and returns it. Tis way, the predicted rating is normalized.
 
-### main.py
+### main_method.py
 This program runs all the other three programs. We broke the model up like this so that we could test different powers for the distance weight. 
