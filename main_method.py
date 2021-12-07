@@ -14,7 +14,10 @@ user_ratings = pd.read_csv("user_ratings.csv")
 
 #__________________MAIN METHOD__________________#
 
-WEIGHT_matrix = build_WEIGHT_matrix.build(user_history)
+powers = [0.5,2,4,8,16,32]
 RATINGS_matrix = build_RATINGS_dfs.build(user_history, user_ratings)
 
-predicted_ratings = predict.run(WEIGHT_matrix, RATINGS_matrix)
+for power in powers:
+
+  WEIGHT_matrix = build_WEIGHT_matrix.build(user_history, power)
+  predicted_ratings = predict.run(WEIGHT_matrix, RATINGS_matrix)
