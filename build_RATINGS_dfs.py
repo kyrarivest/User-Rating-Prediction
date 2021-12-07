@@ -2,11 +2,11 @@ import numpy as np
 import pandas as pd
 import pickle
 
-#Builds the dataframe of ratings, including the users that are in the user_history but not in the user_ratings data
+#Author: Kyra Rivest
+#See README.md for description and purpose
 
 
-#user_history_data = "user_history_short.csv"
-#user_ratings_data = "user_ratings.csv"
+
 def build(user_history_data, user_ratings_data):
     # load data as a dataframe with pandas
     user_history = pd.read_csv(user_history_data)
@@ -28,7 +28,6 @@ def build(user_history_data, user_ratings_data):
 
         user_i = [] #will contain user_i's ratings of all products
         user_i.append(user_id) 
-        
         
     
         #If the user is in both the user_history and the user_ratings data
@@ -57,10 +56,13 @@ def build(user_history_data, user_ratings_data):
 
     #convert matrix to a dataframe and return
     RATING_full_df = pd.DataFrame(RATINGS_full, columns=product_names)
+    
+    print("Done computing")
+    
+    #save RATINGS df as a csv
+    #RATING_full_df.to_csv("RATINGS_short.csv", index=False)
     return RATING_full_df
 
 
-    #save RATINGS df as a csv
-    #RATING_full_df.to_csv("RATINGS_short.csv", index=False)
 
     
