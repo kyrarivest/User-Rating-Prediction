@@ -27,7 +27,13 @@ The helper method of the **run** method is **pred_ratings**. This is the method 
 This program runs all the other three programs. We broke the model up like this so that we could test different powers for the distance weight. 
 
 ### analyze_results.py
-This program runs error analysis on the resulting prediction csv files. 
+This program runs error analysis on the resulting prediction csv files. Calculates realtive absolute error, realtive error, and absolute errors as given in the report.
 
 # To run the code
 In order to run this code, you will only have to run the **main.py** file to reproduce what we have already included.
+
+```python
+python main.py
+```
+
+The resulting prediction files will be saved to the **results** folder. After **predict.py** runs, **main.py** will run **analyze_results.py** and the errors will be printed to the console.
