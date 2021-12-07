@@ -2,95 +2,72 @@ import numpy as np
 import pandas as pd
 import pickle
 
-#with open('DISTANCES_full.pkl', 'rb') as f:
-#   user_distances = pickle.load(f)
-
-#user_ratings = pd.read_csv("RATINGS_short.csv")
+#Authors: Daniel Hariyanto and Kyra Rivest
+#See the README.md for description and purpose of this file
 
 
 
-def run(WEIGHT_matrix, RATINGS_matrix):
-    #Prepare data for processing
-    complete_matrix = RATINGS_matrix.copy()
-    total_error = 0
-    total_error_count = 0 
 
+#Predict rating for a specified user and product based on weights matrix
+#Ex. Predict rating for user 1, product 1, returns predicted rating
 
-
-    #_________Main Loop_________
-    for prod in RATINGS_matrix:  #for each product
-        if not prod == "USER ID": #skip the first column
-
-            print("___________________(PRODUCT: " + str(prod) + ")___________________")
-            print()
-
-            for j in range(len(RATINGS_matrix)): #for each user for that product column, generate a rating
-                user_j_rating = RATINGS_matrix[prod][j]
-                #print("Predicting for user " + str(j))
-
-                rating_predicted = 0
-                sum_W_r = 0
-                sum_W = 0
-                mean_squared_error = 0
-                W = 0
-
-                for k in range(len(RATINGS_matrix)): #go through each user that is not user j
-                    user_k_rating = RATINGS_matrix[prod][k]
-                    #print("     user " + str(k))
-                    #print("     rating: " + str(user_ratings[prod][k]))
-                    #print("     "+ str(user_ratings["USER ID"][j] != user_ratings["USER ID"][k]))
-
-                    if((RATINGS_matrix["USER ID"][j] != RATINGS_matrix["USER ID"][k]) and (not np.isnan(user_k_rating))):
-                        W = WEIGHT_matrix[j][k+1]
-                        sum_W_r += W * (user_k_rating)
-                        sum_W += W
-                        W = 0
-
-                    #print("     User distance: " + str(user_distances[j][k+1]))
-                    #print("     W: " + str(W))
-                    #print("     sum_W: " + str(sum_W))
-                    #print("     sum_W_r: " + str(sum_W_r))
-                    #print()
-
-        
-                if(sum_W_r == 0):
-                    #print("Inconclusive, no ratings for this product exist")
-                    rating_predicted = -1
-                else:
-                    rating_predicted = sum_W_r / sum_W 
-
-
-                if((not np.isnan(user_j_rating)) and (not rating_predicted == -1)):
-                    mean_squared_error = (rating_predicted - RATINGS_matrix[prod][j]) ** 2
-                    total_error += mean_squared_error
-                    total_error_count += 1
-
-                complete_matrix[prod][j] = rating_predicted
-
-
-                #print("User " + str(int(user_ratings["USER ID"][j])) + " rating: " + str(rating_predicted))
-                #print("True rating: " + str(user_ratings[prod][j]))
-                #print("Error: " + str(mean_squared_error))
-                #print("Total error: " + str(total_error))
-                #print()
-            
-
-
-    complete_matrix.to_csv("RATINGS_complete_short.csv", index=False)
-
-
-    #open_file = open("RATINGS_complete_full2.pkl", "wb")
-    #pickle.dump(complete_matrix, open_file)
-    #open_file.close()
-
-
-    print("___________________DONE___________________")
-    print("Average Error: " + str(total_error / total_error_count))
-    print("Total error: " + str(total_error))
+#weights_index: a list of all user IDs in order
+#weights_vector: a vector of distances of a given user to all other users
+#ratings_index:a list of all user IDs for a specified product column
+#ratings_vector: a specified product column
+def pred_ratings(weights_index, weights_vector, ratings_index, ratings_vector):
+    # assumes that len(weights_vector) > len(ratings_vector)
+    # assumes that ratings_index is a subset of weights_index
     
+    pred = 0
+    new_weights_vector = []
+    counter = 0
+    
+    for r, rating in enumerate(ratings_vector):
+        if weights_index[r+counter] == ratings_index[r]:
+            if not np.isnan(rating):
+                new_weights_vector.append(weights_vector[r+counter])
+                pred += weights_vector[r+counter] * rating
+        else:
+            counter += 1
+    
+    weight_tot = 0
+    for weight in new_weights_vector:
+        weight_tot += weight
 
-    #print(complete_matrix)
+    if weight_tot == 0:
+        rating_score = 0
+    else:
+        rating_score = pred/weight_tot
+    
+    return rating_score
 
+
+
+
+#Predicts the ratings for every user for every product (predicts regardless of whether or not the rating is missing or not).
+#user_history: the original user_history data
+#weight_matrix: the weight matrix of user distances
+#user_ratings_table: the ratings matrix of user and product ratings
+def run(user_history, weight_matrix, user_ratings_table):
+    print('Predicting ratings...')
+
+
+    columns = [col for col in user_ratings_table.columns]   #list of all product columns
+
+    user_ratings_table_pred = user_ratings_table.copy()     #copy of the user_ratings table to be filled in with ratings
+
+    for u in range(len(user_ratings_table)):       #for each user
+        for p in range(len(user_ratings_table.iloc[u])):    #predict rating for each product
+            pred = pred_ratings(list(user_history['USER ID']), weight_matrix[list(user_ratings_table.index)[u]], list(user_ratings_table[columns[p]].index), user_ratings_table[columns[p]])
+            user_ratings_table_pred.iloc[u][p] = pred
+
+    print('Completed predicting ratings')
+
+    #Save rating results table as a csv file
+    #user_ratings_table_pred.to_csv('distance_2_new.csv')
+
+    return user_ratings_table_pred
 
 
 
