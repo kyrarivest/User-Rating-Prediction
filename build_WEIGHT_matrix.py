@@ -12,17 +12,17 @@ import pickle
 #To be used in the build function to create the weight matrix
 #abs_diff: the absolute distance of two user's website browsing times for a particualr website
 #exp: the specified power to raise the abs_diff by. This is a parameter of the model that is varied
-def get_weights_distance(abs_diff, exp):
+def get_weights_distance(abs_diff, power):
     tot_abs_diff = np.sum(abs_diff)
     if tot_abs_diff == 0:
         return 0
-    return 1/tot_abs_diff**exp
+    return 1/tot_abs_diff**power
 
 
 
 #The main function that builds the weight matrix
 #user_history: the given user_history csv file
-def build(user_history):
+def build(user_history, power):
     print("Begin building weight matrix...")
     weight_matrix = []
 
@@ -33,7 +33,7 @@ def build(user_history):
         for v in range(u, len(user_history)):   #go through every user
             print('     comparing User #' + str(u) + ' and ' + 'User #' + str(v))
             abs_diff = np.absolute(user_history.iloc[u, 1:] - user_history.iloc[v, 1:])
-            tot_abs_diff = get_weights_distance(abs_diff, 2)
+            tot_abs_diff = get_weights_distance(abs_diff, power)
             weight_matrix[u].append(tot_abs_diff)
 
     #Create matrix
