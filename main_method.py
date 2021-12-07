@@ -20,4 +20,4 @@ RATINGS_matrix = build_RATINGS_dfs.build(user_history, user_ratings)
 for power in powers:
 
   WEIGHT_matrix = build_WEIGHT_matrix.build(user_history, power)
-  predicted_ratings = predict.run(WEIGHT_matrix, RATINGS_matrix)
+  predicted_ratings = predict.run(WEIGHT_matrix, RATINGS_matrix, power)
