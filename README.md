@@ -19,4 +19,9 @@ Each row in the matrix represents a user. Each entry in a given row i is the dis
 This program takes in both given data sets and produces pivot table style matrix containing all 4500 users and their ratings for each product. It first loads the data as *user_history_data* and *user_rating_data*, prepares the data files for processing, and then produces the ratings matrix. The resulting table contians all products as columns and all users as rows. This is the table that the predict.py program will fill in with missing ratings.
 
 ### predict.py
+This program contains two methods. The **run** method is the main loop that runs the prediction algorithm. It first copies the user rating matrix so that the newly predicted ratings wont affect the future predictions. It loops through each user and for each user predicts all the user's ratings for all products based on the distance of that user to all other users who have a existing product prediction (meaning it will skip a user if that user hasn't given a rating for the product). After the loop finishes and the table has been filled, it will be returned for analysis.
+
+The helper method of the **run** method is **pred_ratings**. This is the method taht does the heavy-lifting computation portion of the algorithm. For a specified user i and a specified product j, it will compute weighted rating of user i by multiplying all other user ratings (from user rating matrix) by the user distance to user i (from weight matrix). It then scales the final score and returns it. Tis way, the predicted rating is normalized.
+
 ### main.py
+This program runs all the other three programs. We broke the model up like this so that we could test different powers for the distance weight. 
