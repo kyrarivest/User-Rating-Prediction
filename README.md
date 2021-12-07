@@ -11,7 +11,9 @@ The data we are given two data sets:
 This repository includes four different files for the model.
 
 ### build_WEIGHT_matrix.py
+
 ### build_RATINGS_dfs.py
-This program takes in both given data sets and produces pivot table style matrix containing all 4500 users and their ratings for each product. It first loads the data as *user_history_data* and *user_rating_data*, prepares the data fiels for processing, and then produces the ratings matrix. 
+This program takes in both given data sets and produces pivot table style matrix containing all 4500 users and their ratings for each product. It first loads the data as *user_history_data* and *user_rating_data*, prepares the data files for processing, and then produces the ratings matrix. The resulting table contians all products as columns and all users as rows. This is the table that the predict.py program will fill in.
+
 ### predict.py
 ### main.py
