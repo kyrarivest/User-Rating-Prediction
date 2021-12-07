@@ -66,7 +66,10 @@ def run(user_history, weight_matrix, user_ratings_table, power):
     print('Completed predicting ratings')
 
     #Save rating results table as a csv file
-    user_ratings_table_pred.to_csv('results_for_analysis/distance_' + str(power) + '.csv')
+    if(power == 0.5):
+        user_ratings_table_pred.to_csv('results_for_analysis/distance_half.csv')
+    else:
+        user_ratings_table_pred.to_csv('results_for_analysis/distance_' + str(power) + '.csv')
 
     return user_ratings_table_pred
 
