@@ -43,3 +43,12 @@ def run():
         print("Power: " + str(powers[i]))
         print("Relative loss: " + str(loss/denom))
         print("Absolute loss: " + str(loss))
+        
+        
+        
+        #Save data to results_FINAL
+        user_ratings_back_to_orig = y_pred.pivot_table(user_ratings,values='RATING', index=['USER ID', 'PRODUCT'])
+        if(powers[i] == 0.5):
+            user_ratings_back_to_orig.to_csv('results_FINAL/distance_half.csv')
+        else:
+            user_ratings_back_to_orig.to_csv('results_FINAL/distance_' + str(powers[i]) + '.csv')
