@@ -25,3 +25,9 @@ The helper method of the **run** method is **pred_ratings**. This is the method 
 
 ### main_method.py
 This program runs all the other three programs. We broke the model up like this so that we could test different powers for the distance weight. 
+
+### analyze_results.py
+This program runs error analysis on the resulting prediction csv files. 
+
+# To run the code
+In order to run this code, you will only have to run the **main.py** file to reproduce what we have already included.
