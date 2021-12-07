@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 
 #Author: Daniel Hariyanto
-#Description: builds a matrix of the 
+#See the README.md for description and purpose of this file
 
 
 
@@ -44,6 +44,8 @@ def build(user_history):
     for i in range(len(X)):
         weight_matrix[int(user_history.iloc[i][0])] = X[i]
 
+        
+        
     #Create dataframe for weight matrix
     weight_matrix = pd.DataFrame(weight_matrix)
     
