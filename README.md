@@ -35,6 +35,9 @@ This will hold the resulting raw prediction files that come out of **predict.py*
 ### results_FINAL
 This will hold the final prediction files after error analysis has been run on them. These files will be in the form of the original user_ratings file.
 
+### Extracode
+Holds extra pieces of code that are relevant to individual contirbutions to the project.
+
 # To run the code
 In order to run this code, you will only have to run the **main.py** file to reproduce what we have already included.
 
@@ -42,4 +45,4 @@ In order to run this code, you will only have to run the **main.py** file to rep
 python main.py
 ```
 
-The resulting prediction files will be saved to the **results** folder. After **predict.py** runs, **main.py** will run **analyze_results.py** and the errors will be printed to the console.
+The resulting prediction files will be saved to the **results_for_analysis** folder. After **predict.py** runs, **main.py** will run **analyze_results.py** and the errors will be printed to the console.
