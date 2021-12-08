@@ -50,14 +50,27 @@ def build(user_history, power):
         
     #Create dataframe for weight matrix
     weight_matrix = pd.DataFrame(weight_matrix)
-    
-    #Save weight matrix as csv file
-    #weight_matrix.to_csv('weight_matrix_2.csv')
 
-    open_file = open("weight_matrix.pkl", "wb")
-    pickle.dump(weight_matrix, open_file)
-    open_file.close()
+
+    #Save weight matrix as a csv and pkl file if needed
+    """
+    if(power == 0.5):
+        weight_matrix.to_csv('weight_matrix_half.csv')
+
+        open_file = open('weight_matrix_half.pkl', "wb")
+        pickle.dump(weight_matrix, open_file)
+        open_file.close()
+
+    else:
+        weight_matrix.to_csv('weight_matrix_' + str(power) + '.csv')
+
+        open_file = open('weight_matrix_' + str(power) + '.pkl', "wb")
+        pickle.dump(weight_matrix, open_file)
+        open_file.close()
+    """
+   
 
     print('completed building weight matrix')
     print("Execution time = " + str(datetime.datetime.now() - begin_time))
+    print()
     return weight_matrix
