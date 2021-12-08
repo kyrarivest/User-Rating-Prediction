@@ -38,16 +38,25 @@ def build(user_history_data, user_ratings_data):
 
     print('Completed building weight matrix')
     print("Execution time = " + str(datetime.datetime.now() - begin_time))
+    print()
     
-    #save RATINGS df as a pkl file
+
+    print(RATING_full_df)
+    return RATING_full_df
+
+    
+
+    
+
+    #save ratings matrix as a csv and pkl file if needed
+    """
     RATING_full_df.to_csv("RATINGS_full.csv", index=False)
 
     open_file = open("RATINGS_full.pkl", "wb")
     pickle.dump(RATING_full_df, open_file)
     open_file.close()
+    """
 
-    print(RATING_full_df)
-    return RATING_full_df
 
     
 
