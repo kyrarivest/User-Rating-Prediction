@@ -63,7 +63,7 @@ def run(user_history, weight_matrix, user_ratings_table, power):
     for u in range(len(user_ratings_table)):       #for each user
         print("Processing user: " + str(u))
         for p in range(len(user_ratings_table.iloc[u])):    #predict rating for each product
-            pred = pred_ratings(list(user_history['USER ID']), weight_matrix[u], list(user_ratings_table[columns[p]].index), user_ratings_table[columns[p]])
+            pred = pred_ratings(list(user_history['USER ID']), weight_matrix[list(user_ratings_table.index)[u]], list(user_ratings_table[columns[p]].index), user_ratings_table[columns[p]])
             user_ratings_table_pred.iloc[u][p] = pred
 
     print()
@@ -72,12 +72,20 @@ def run(user_history, weight_matrix, user_ratings_table, power):
 
     #Save rating results table as a csv file
     if(power == 0.5):
-        user_ratings_table_pred.to_csv('results_for_analysis/distance_half.csv')
+        user_ratings_table_pred.to_csv('results_for_analysis/raw_results_power_half.csv')
+
+        open_file = open('results_for_analysis/raw_results_power_half.pkl', "wb")
+        pickle.dump(user_ratings_table_pred, open_file)
+        open_file.close()
+
     else:
-        user_ratings_table_pred.to_csv('results_for_analysis/distance_' + str(power) + '.csv')
+        user_ratings_table_pred.to_csv('results_for_analysis/raw_results_power_' + str(power) + '.csv')
+
+        open_file = open('results_for_analysis/raw_results_power_' + str(power) + '.pkl', "wb")
+        pickle.dump(user_ratings_table_pred, open_file)
+        open_file.close()
 
     return user_ratings_table_pred
-
 
 
 
