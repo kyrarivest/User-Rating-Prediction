@@ -54,6 +54,10 @@ def build(user_history, power):
     #Save weight matrix as csv file
     #weight_matrix.to_csv('weight_matrix_2.csv')
 
+    open_file = open("weight_matrix.pkl", "wb")
+    pickle.dump(weight_matrix, open_file)
+    open_file.close()
+
     print('completed building weight matrix')
     print("Execution time = " + str(datetime.datetime.now() - begin_time))
     return weight_matrix
