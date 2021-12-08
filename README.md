@@ -8,7 +8,7 @@ The data we are given two data sets:
 
 # File Descriptions
 
-This repository includes four different files for the model.
+This repository includes four different files and two folders for the model.
 
 ### build_WEIGHT_matrix.py
 This program takes in the given user_history data and produces a weight matrix for the user browser hisotry data. In our notation, a "weight" for a given user to another user is an inverse distance between the two users. And this distance is a sum of the difference in browsing times between the two users for every website. We raise this distance to a power which is a parameter in our model (see report for more details). These weights are used in **predict.py** to weight the different users' ratings for a particular product when predicting the rating for a given user i, thereby placing more importance on the ratings of users that are "closer" to user i than those that are farther.
@@ -27,7 +27,13 @@ The helper method of the **run** method is **pred_ratings**. This is the method 
 This program runs all the other three programs. We broke the model up like this so that we could test different powers for the distance weight. 
 
 ### analyze_results.py
-This program runs error analysis on the resulting prediction csv files. Calculates realtive absolute error, realtive error, and absolute errors as given in the report.
+This program runs error analysis on the raw resulting prediction csv files. Calculates realtive absolute error, realtive error, and absolute errors as given in the report. These errors will be printed to the console. The raw prediction files will then be converted to the final format which is the same as the original user_ratings file.
+
+### results_for_analysis
+This will hold the resulting raw prediction files that come out of **predict.py**. These files will be in the form of the pivot table so that error analysis can be run on them.
+
+### results_FINAL
+This will hold the final prediction files after error analysis has been run on them. These files will be in the form of the original user_ratings file.
 
 # To run the code
 In order to run this code, you will only have to run the **main.py** file to reproduce what we have already included.
