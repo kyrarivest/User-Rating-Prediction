@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import pickle
+import datetime
 
 #Author: Daniel Hariyanto
 #See the README.md for description and purpose of this file
@@ -23,6 +24,7 @@ def get_weights_distance(abs_diff, power):
 #The main function that builds the weight matrix
 #user_history: the given user_history csv file
 def build(user_history, power):
+    begin_time = datetime.datetime.now()
     print("Begin building weight matrix...")
     weight_matrix = []
 
@@ -50,7 +52,8 @@ def build(user_history, power):
     weight_matrix = pd.DataFrame(weight_matrix)
     
     #Save weight matrix as csv file
-    #weight_matrix.to_csv('weight_matrix.csv')
+    #weight_matrix.to_csv('weight_matrix_2.csv')
 
-    print('completed finding weight matrix')
+    print('completed building weight matrix')
+    print("Execution time = " + str(datetime.datetime.now() - begin_time))
     return weight_matrix
