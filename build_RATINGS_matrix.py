@@ -41,9 +41,10 @@ def build(user_history_data, user_ratings_data):
     extra_df = pd.DataFrame(extra_users, columns=user_ratings_table.columns, index=indices)
 
     
+    
     #Combine the two dataframes 
-    RATING_full_df = user_ratings_table.append(extra_df)
-    RATING_full_df.index.name = "USER ID"
+    full_user_ratings_table = user_ratings_table.append(extra_df)
+    full_user_ratings_table.index.name = "USER ID"
 
 
     print('Completed building weight matrix')
@@ -53,14 +54,14 @@ def build(user_history_data, user_ratings_data):
     
     #save ratings matrix as a csv and pkl file if needed
     """
-    RATING_full_df.to_csv("RATINGS_full.csv", index=False)
+    full_user_ratings_table.to_csv("RATINGS_full.csv", index=False)
 
     open_file = open("RATINGS_full.pkl", "wb")
     pickle.dump(RATING_full_df, open_file)
     open_file.close()
     """
 
-    return RATING_full_df
+    return full_user_ratings_table
 
     
 
