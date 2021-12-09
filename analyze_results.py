@@ -72,5 +72,62 @@ def run(RATINGS_matrix):
             user_ratings_back_to_orig.to_csv('results_FINAL/final_results_0.5.csv', index=False)
         else:
             user_ratings_back_to_orig.to_csv('results_FINAL/final_results_' + str(2) + '.csv', index=False)
-        
+            
+            
+"""
+RESULTS:
+
+Power 0.5
+Total Execution Time: 2:40:20
+
+Absolute Relative loss: 0.445464213095741
+Relative loss: 0.22496504789801816
+Absolute loss: 74155.98208983491
+
+Power 1
+Total Execution Time: 2:44:15
+
+Absolute Relative loss: 0.44709021395312915
+Relative loss: 0.2260853002874098
+Absolute loss: 74426.66082656346
+
+Power 2
+Total Execution Time: 2:33:17
+
+Absolute Relative loss: 0.45325729221829714
+Relative loss: 0.23491250718891812
+Absolute loss: 75453.28817828771
+
+Power 4
+Total Execution Time: 2:32:15
+
+Absolute Relative loss: 0.4812942417911362
+Relative loss: 0.2803563732593066
+Absolute loss: 80120.57113672866
+
+
+Power 8
+Total Execution Time: 2:40:07
+
+Absolute Relative loss: 0.5285239608087979
+Relative loss: 0.35576954987977644
+Absolute loss: 87982.85523187979
+
+
+Power 16
+Total Execution Time: 2:29:34
+
+Absolute Relative loss: 0.5580353965647471
+Relative loss: 0.39943284038112653
+Absolute loss: 92895.59443073688
+
+
+Power 32
+Total Execution Time: 2:29:10
+
+Absolute Relative loss: 0.5703427832756094
+Relative loss: 0.4164919844977325
+Absolute loss: 94944.39278910741
+
+"""
         
