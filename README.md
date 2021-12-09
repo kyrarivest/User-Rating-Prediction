@@ -37,7 +37,7 @@ This will hold the resulting raw prediction files that come out of **predict.py*
 This will hold the final prediction files after error analysis has been run on them. These files will be in the form of the original user_ratings file.
 
 ### Extracode
-Holds extra pieces of code that are relevant to individual contirbutions to the project. Contains the **Rec-KNN-Copy1.ipynb** coded by Nicole and the **PLS.ipynb** coded by Kyra.
+Holds extra pieces of code that are relevant to individual contirbutions to the project. Contains the **Rec-KNN-Copy1.ipynb** coded by Nicole, **kmeans.py** coded by Daniel, and the **PLS.ipynb** coded by Kyra.
 
 # To run the code
 In order to run this code, you will only have to run the **main.py** file to reproduce what we have already included.
