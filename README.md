@@ -42,6 +42,8 @@ Holds extra pieces of code that are relevant to individual contirbutions to the 
 # To run the code
 In order to run this code, you will only have to run the **main.py** file to reproduce what we have already included.
 
+*Note:* The code is in a form that assumes you are running it for the first time so it will generate *everything*. However, we included the files we got from already running it in this github so they can be viewed easier.
+
 ```python
 python main.py
 ```
@@ -54,5 +56,7 @@ This will run all powers in one loop so it will take awhile. But for each power,
 - analyze_results.py: doing error analysis and formatting the final results takes about 30sec
 
 So in total, each round should take around 2.5 hours, so to run 7 different powers would take about 17.5 hours.
+
+*Note: *An alternative way to run this would be to run each power in it's own seperate file concurrently on an HPCC.
 
 The resulting prediction files will be saved to the **results_for_analysis** folder. After **predict.py** runs, **main.py** will run **analyze_results.py** and the errors will be printed to the console. You can then view the final result files in the **results_FINAL folder**.
