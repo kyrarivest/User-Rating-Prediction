@@ -12,7 +12,7 @@ import datetime
 #Returns the inverse of the weighted distance between the absolute distance of two user's browser times
 #To be used in the build function to create the weight matrix
 #abs_diff: the absolute distance of two user's website browsing times for a particualr website
-#exp: the specified power to raise the abs_diff by. This is a parameter of the model that is varied
+#power: the specified power to raise the abs_diff by. This is a parameter of the model that is varied
 def get_weights_distance(abs_diff, power):
     tot_abs_diff = np.sum(abs_diff)
     if tot_abs_diff == 0:
@@ -22,10 +22,11 @@ def get_weights_distance(abs_diff, power):
 
 
 #The main function that builds the weight matrix
-#user_history: the given user_history csv file
+#user_history: the original user_history csv file
+#power: specify which power to build the matrix for
 def build(user_history, power):
     begin_time = datetime.datetime.now()
-    print("Begin building weight matrix...")
+    print("Begin building weight matrix...      (This step will take about 2.5 hours)")
     weight_matrix = []
 
     
@@ -33,12 +34,16 @@ def build(user_history, power):
         weight_matrix.append([float(0) for i in range(u)])
         
         for v in range(u, len(user_history)):   #go through every user
-            print('     comparing User #' + str(u) + ' and ' + 'User #' + str(v))
+            
+            #Turn this on if you want to keep track of user's being processed
+            #print('     comparing User #' + str(u) + ' and ' + 'User #' + str(v))
+            
             abs_diff = np.absolute(user_history.iloc[u, 1:] - user_history.iloc[v, 1:])
             tot_abs_diff = get_weights_distance(abs_diff, power)
             weight_matrix[u].append(tot_abs_diff)
 
-    #Create matrix
+            
+    #Create upper triangular matrix and reflect it to create full matrix
     X = np.array(weight_matrix)
     X = X + X.T - np.diag(np.diag(X))
 
@@ -70,7 +75,7 @@ def build(user_history, power):
     """
    
 
-    print('completed building weight matrix')
+    print('Completed building weight matrix')
     print("Execution time = " + str(datetime.datetime.now() - begin_time))
     print()
     return weight_matrix
