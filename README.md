@@ -15,7 +15,8 @@ This program takes in the given user_history data and produces a weight matrix f
 
 Each row in the matrix represents a user. Each entry in a given row i is the distance of user i to another user. Therefore, we were able to significantly reduce the run time by eliminating redundancy in calculations. We did this by building an upper triangular matrix and then reflecting the entries onto the lower empty part of the matrix to create the full matrix. We then return the matrix to be used in **predict.py**.
 
-### build_RATINGS_dfs.py
+
+### build_RATINGS_matrix.py
 This program takes in both given data sets and produces pivot table style matrix containing all 4500 users and their ratings for each product. It first loads the data as *user_history_data* and *user_rating_data*, prepares the data files for processing, and then produces the ratings matrix. The resulting table contians all products as columns and all users as rows. This is the table that the predict.py program will fill in with missing ratings.
 
 ### predict.py
@@ -44,5 +45,13 @@ In order to run this code, you will only have to run the **main.py** file to rep
 ```python
 python main.py
 ```
+
+This will run all powers in one loop so it will take awhile. But for each power, we have calculated about how long it will take (these times are also documented within the code so when it is run, it will print the runtime)
+
+- build_WEIGHT_matrix.py: building the weight matrix takes 2 hours
+- predict.py: predicting the ratings takes about 40 minutes
+- analyze_results.py: doing error analysis and formatting the final results takes about 30sec
+
+So in total, each round should take around 2.5 hours, so to run 7 different powers would take about 17.5 hours.
 
 The resulting prediction files will be saved to the **results_for_analysis** folder. After **predict.py** runs, **main.py** will run **analyze_results.py** and the errors will be printed to the console.
