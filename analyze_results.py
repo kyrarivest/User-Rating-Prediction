@@ -5,7 +5,7 @@ from statistics import variance
 def run():
 
     directory = "results_for_analysis/"
-    preds = ["distance_half.csv","distance_1.csv","distance_2.csv","distance_4.csv","distance_8.csv","distance_16.csv","distance_32.csv"]
+    preds = ["raw_results_power_half.csv","raw_results_power_1.csv","raw_results_power_2.csv","raw_results_power_4.csv","raw_results_power_8.csv","raw_results_power_16.csv","raw_results_power_32.csv"]
     preds = [directory+i for i in preds]
 
     y_true = pd.read_csv("RATINGS_full.csv")
