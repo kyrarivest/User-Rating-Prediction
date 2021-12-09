@@ -31,7 +31,8 @@ def run(RATINGS_matrix):
                 
     #For each power, calculate errors
     powers = [0.5,1,2,4,8,16,32]
-    for i, pred in preds:
+    for pred in preds:
+        print("Analyzing results for power: " + str(powers[preds.index(pred)]))
         y_pred = pd.read_csv('results_for_analysis/' + str(pred))
         sorted_columns = sorted(y_pred.columns[1:])
         sorted_columns.insert(0, y_pred.columns[0])
@@ -52,7 +53,7 @@ def run(RATINGS_matrix):
             abs_loss += abs(y_pred_val - y_true_val)
 
             
-        print("Power: " + str(powers[i]))
+        #Print errors to console
         print("Absolute Relative loss: " + str(abs_loss/denom))
         print("Relative loss: " + str(loss_squared/denom_squared))
         print("Absolute loss: " + str(abs_loss))
@@ -76,29 +77,28 @@ def run(RATINGS_matrix):
             
 """
 RESULTS:
-
-Power 0.5
+Analysing results for power: 0.5
 Total Execution Time: 2:40:20
 
 Absolute Relative loss: 0.445464213095741
 Relative loss: 0.22496504789801816
 Absolute loss: 74155.98208983491
 
-Power 1
+Analysing results for power: 1
 Total Execution Time: 2:44:15
 
 Absolute Relative loss: 0.44709021395312915
 Relative loss: 0.2260853002874098
 Absolute loss: 74426.66082656346
 
-Power 2
+Analysing results for power: 2
 Total Execution Time: 2:33:17
 
 Absolute Relative loss: 0.45325729221829714
 Relative loss: 0.23491250718891812
 Absolute loss: 75453.28817828771
 
-Power 4
+Analysing results for power: 4
 Total Execution Time: 2:32:15
 
 Absolute Relative loss: 0.4812942417911362
@@ -106,7 +106,7 @@ Relative loss: 0.2803563732593066
 Absolute loss: 80120.57113672866
 
 
-Power 8
+Analysing results for power: 8
 Total Execution Time: 2:40:07
 
 Absolute Relative loss: 0.5285239608087979
@@ -114,7 +114,7 @@ Relative loss: 0.35576954987977644
 Absolute loss: 87982.85523187979
 
 
-Power 16
+Analysing results for power: 16
 Total Execution Time: 2:29:34
 
 Absolute Relative loss: 0.5580353965647471
@@ -122,7 +122,7 @@ Relative loss: 0.39943284038112653
 Absolute loss: 92895.59443073688
 
 
-Power 32
+Analysing results for power: 32
 Total Execution Time: 2:29:10
 
 Absolute Relative loss: 0.5703427832756094
