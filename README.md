@@ -8,7 +8,7 @@ The data we are given two data sets:
 
 # File Descriptions
 
-This repository includes four different files and two folders for the model.
+This repository includes five different files and two folders for the model.
 
 ### build_WEIGHT_matrix.py
 This program takes in the given user_history data and produces a weight matrix for the user browser hisotry data. In our notation, a "weight" for a given user to another user is an inverse distance between the two users. And this distance is a sum of the difference in browsing times between the two users for every website. We raise this distance to a power which is a parameter in our model (see report for more details). These weights are used in **predict.py** to weight the different users' ratings for a particular product when predicting the rating for a given user i, thereby placing more importance on the ratings of users that are "closer" to user i than those that are farther.
