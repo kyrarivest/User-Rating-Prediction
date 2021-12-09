@@ -61,19 +61,26 @@ def run(user_history, weight_matrix, user_ratings_table, power):
     user_ratings_table_pred = user_ratings_table.copy()     #copy of the user_ratings table to be filled in with ratings
 
     for u in range(len(user_ratings_table)):       #for each user
-        print("Processing user: " + str(u))
+        
+        #Turn this on if you want to keep track of which users are being processed in real time
+        #print("Processing user: " + str(u))
+        
+        
         for p in range(len(user_ratings_table.iloc[u])):    #predict rating for each product
             pred = pred_ratings(list(user_history['USER ID']), weight_matrix[list(user_ratings_table.index)[u]], list(user_ratings_table[columns[p]].index), user_ratings_table[columns[p]])
             user_ratings_table_pred.iloc[u][p] = pred
+            
+            
 
     print()
     print('Completed predicting ratings')
     print("Execution time = " + str(datetime.datetime.now() - begin_time))
 
-    #Save rating results table as a csv file
+    
+    
+    #Save rating results table as a csv file and a pkl file to the results_for_analysis file
     if(power == 0.5):
         user_ratings_table_pred.to_csv('results_for_analysis/raw_results_power_half.csv')
-
         open_file = open('results_for_analysis/raw_results_power_half.pkl', "wb")
         pickle.dump(user_ratings_table_pred, open_file)
         open_file.close()
@@ -85,6 +92,9 @@ def run(user_history, weight_matrix, user_ratings_table, power):
         pickle.dump(user_ratings_table_pred, open_file)
         open_file.close()
 
+        
+        
+        
     return user_ratings_table_pred
 
 
