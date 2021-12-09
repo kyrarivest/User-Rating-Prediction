@@ -57,6 +57,6 @@ This will run all powers in one loop so it will take awhile. But for each power,
 
 So in total, each round should take around 2.5 hours, so to run 7 different powers would take about 17.5 hours.
 
-*Note: *An alternative way to run this would be to run each power in it's own seperate file concurrently on an HPCC.
+*Note:* An alternative way to run this would be to run each power in it's own seperate file concurrently on an HPCC.
 
 The resulting prediction files will be saved to the **results_for_analysis** folder. After **predict.py** runs, **main.py** will run **analyze_results.py** and the errors will be printed to the console. You can then view the final result files in the **results_FINAL folder**.
