@@ -46,6 +46,7 @@ In order to run this code, you will only have to run the **main.py** file to rep
 python main.py
 ```
 
+### How the code is run and runtimes
 This will run all powers in one loop so it will take awhile. But for each power, we have calculated about how long it will take (these times are also documented within the code so when it is run, it will print the runtime)
 
 - build_WEIGHT_matrix.py: building the weight matrix takes 2 hours
