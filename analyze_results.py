@@ -4,10 +4,13 @@ from statistics import variance
 
 def run(RATINGS_matrix):
 
+    #Prepare to load data
     directory = "results_for_analysis/"
     preds = ["raw_results_power_half.csv","raw_results_power_1.csv","raw_results_power_2.csv","raw_results_power_4.csv","raw_results_power_8.csv","raw_results_power_16.csv","raw_results_power_32.csv"]
     preds = [directory+i for i in preds]
 
+    
+    #Prepare the true data
     y_true = RATINGS_matrix
     sorted_columns = sorted(y_true.columns[1:])
     sorted_columns.insert(0, y_true.columns[0])
@@ -24,6 +27,9 @@ def run(RATINGS_matrix):
                 column_index.append(j)
 
 
+                
+                
+    #For each power, calculate errors
     powers = [0.5,1,2,4,8,16,32]
     for i, pred in preds:
         y_pred = pd.read_csv('results_for_analysis/' + str(pred))
@@ -50,6 +56,8 @@ def run(RATINGS_matrix):
         print("Absolute Relative loss: " + str(abs_loss/denom))
         print("Relative loss: " + str(loss_squared/denom_squared))
         print("Absolute loss: " + str(abs_loss))
+        print()
+        print()
         
         
         
