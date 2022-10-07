@@ -6,13 +6,14 @@ The data we are given two data sets:
 - [user_history.csv](https://c569257608da4dcaafbc-my.sharepoint.com/:x:/g/personal/kyrarivest_brandeis_edu/ESnHmQiYEqtEuUTzZBAM9aMBa4lJ11yGAOXs3PN4rxFfKg?e=WGI6ZD): provides the browser history times of 4500 users for 100 different websites
 - [user_ratings.csv](https://c569257608da4dcaafbc-my.sharepoint.com/:x:/g/personal/kyrarivest_brandeis_edu/Edf-Cftx1QBEg4nT0CrTVMABGhJfDwSN6SKW3Vd9Yry8RA?e=faePVb) : provides the product ratings of 3000 different users for 75 different products. All 3000 users provide the ratings of some but not all 75 products.
 
-Weighted voting & k-nearest neighbor algorithm:
+
+**Weighted voting & k-nearest neighbor algorithm:**
 For our case, we modified the KNN algorithm to function more like the nearest neighbor algorithm. The general idea behind our algorithm is to compare each user i to every other user in the data set to find the users that have the shortest “distance” to user i. This distance essentially represents how “close” user i is to another user. 
 
-Method 1: Euclidean Distance 
+**Method 1: Euclidean Distance** 
 The simplest and most popular distance metric is the Euclidean Distance. We used the Euclidean Distance as our first method to produce all the user distance that will then be implemented in the general cost function. The Euclidean Distance calculates the distance between two real-valued vectors and is calculated as the squared difference between the two vectors. For our weight function, we put the Euclidean distance in the denominator. 
 
-Method 2: Modified Euclidean Distance 
+**Method 2: Modified Euclidean Distance** 
 Similar to the Euclidean Distance model, we use a similar equation where this time, we changed up the power. Instead of squaring it, we used different powers (0.5, 1, 2, 4, 8, 16, 32). The expectation was for our prediction ratings to become more accurate as the powers increase. We’ve previously mentioned that we wanted to make sure closer neighbors had more effect than farther away neighbors. For example, 1 over the distance to the power of 16 should produce a more accurate prediction as compared to the power of 2. The only change in the code would be the P for P = 0.5, 1, 2, 4, 8, 16, and 32, and the Euclidean Distance is modeled when P = 2.
 
 Here we given detailed description of our code that we used in the report.
