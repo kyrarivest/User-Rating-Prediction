@@ -1,6 +1,6 @@
 # MATH122 Final Project - User Rating Prediction
 
-Our final project for MATH 122 uses a K-nearest neighbors inspired model to predict product ratings for 4500 given users. For more information ont he theory behind our approach, please refer to our [final report](https://docs.google.com/document/d/1zeOJMtTpI13Hz6NleexRDa9FsI-tDtqm8mNVLc6mO4g/edit?usp=sharing). Here we given detailed description of our code that we used in the report.
+Our final project for MATH 122 uses a K-nearest neighbors inspired model to predict product ratings for 4500 given users. For more information on the theory behind our approach, please refer to our [final report](https://docs.google.com/document/d/1zeOJMtTpI13Hz6NleexRDa9FsI-tDtqm8mNVLc6mO4g/edit?usp=sharing). Here we given detailed description of our code that we used in the report.
 
 The data we are given two data sets: 
 - [user_history.csv](https://c569257608da4dcaafbc-my.sharepoint.com/:x:/g/personal/kyrarivest_brandeis_edu/ESnHmQiYEqtEuUTzZBAM9aMBa4lJ11yGAOXs3PN4rxFfKg?e=WGI6ZD): provides the browser history times of 4500 users for 100 different websites
